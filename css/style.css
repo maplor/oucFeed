@@ -469,8 +469,6 @@ a {
 .banner {
 	background: #222222;
 	color: #cccccc;
-    /*margin-bottom: 20px;
-    padding-bottom: 20px;*/
     border-bottom: 1px solid #080808;
 }
 .banner a {
@@ -491,7 +489,6 @@ a {
 .title h1 {
 	line-height: 1.11111111em;
 	font-size: 1.125em;
-	/*color: #cccccc;*/
 }
 #nav-collapse {
 	float: right;
@@ -501,7 +498,6 @@ a {
 	padding: .5em 0;
 	
 	display: none;
-	/*color: #cccccc;*/
 }
 #nav-collapse.active {
 	display: block;
@@ -510,28 +506,10 @@ a {
 	border-top: 1px solid #080808;
 	overflow: hidden;
 	clear: both;
-	
-	-webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}#nav.navigation {
-	height: auto;
-}
-#nav.hide {
-	height: 0;
-	/*border: none;*/
-	/*-webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;*/
 }
 #nav ul {
 	padding: .5em 0;
 	border-top: 1px solid #3d3d3d;
-}
-#nav ul li {
-	
 }
 #nav ul li a{
 	display: block;
