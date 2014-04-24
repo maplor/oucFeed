@@ -486,7 +486,7 @@ a {
 	padding: 1em 0;
 	display: block;
 }
-.title h1 {
+.title h1, .main h2 {
 	line-height: 1.11111111em;
 	font-size: 1.125em;
 }
@@ -515,6 +515,54 @@ a {
 	display: block;
 	padding: .625em 0;
 }
+.main .title {
+	float: none;
+	position: relative;
+	/*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAACCAIAAADuA9qHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3RUJFMEVBOUNCQjUxMUUzQjkyN0U3OUM3Njg1RTVDRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3RUJFMEVBQUNCQjUxMUUzQjkyN0U3OUM3Njg1RTVDRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdFQkUwRUE3Q0JCNTExRTNCOTI3RTc5Qzc2ODVFNUNFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdFQkUwRUE4Q0JCNTExRTNCOTI3RTc5Qzc2ODVFNUNFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+HpGPygAAABVJREFUeNpiPHPmDANuwMSAFwAEGACQKgJo4CUITwAAAABJRU5ErkJggg==) repeat-x 0 1.5625em;*/
+}
+.main h2 {
+	width: 5em;
+	margin: 0 auto;
+	text-align: center;
+	background: #ffffff;
+}
+.main hr {
+	width: 100%;
+	height: .125em;
+	margin: 0;
+	background: #cccccc;
+	border: none;
+	
+	position: absolute;
+	left: 0;
+	top: 1.5625em;
+	z-index: -1;
+}
+
+.message-con a {
+	display: block;
+	color: #34495e;
+}
+.message-con h3 {
+	font-size: 1em;
+}
+.message-con p {
+	margin: .5em 0 0 0;
+}
+/*.main h2:before, .main h2:after {
+	content: "";
+	width: 30%;
+	height: 2px;
+	display: block;
+	margin-top: .5em;
+	background: #cccccc;
+}
+.main h2:before {
+	float: left;
+}
+.main h2:after {
+	float: right;
+}*/
 /*.logo {
     float: left;
     width: 20%;
