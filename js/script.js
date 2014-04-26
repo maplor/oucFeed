@@ -27,6 +27,7 @@
 //	}
 //}
 $(document).ready(function() {
+	// 导航栏点击切换方法
 	var nav = $('#nav');
 	var collapse = $('#nav-collapse');
 	nav.hide(400);
@@ -35,5 +36,17 @@ $(document).ready(function() {
 	collapse.on('click', function() {
 		nav.toggle(300);
 		return false;
+	})
+	
+	// 消息列表Ajax
+	$.getJSON('http://oucfeed.duapp.com/list', function(data) {
+		var items = [];
+		$.each(data, function(key, val) {
+			items.push('<li><section class="message-con"><a href="#"><h3>' +
+				val.title + '</h3><p>来源：<span>' +
+				val.category.join("-") + '</span>&nbsp;时间：<time>' +
+				val.datetime + '</time></p><span class="more">详情></span></a></section></li>');
+		});
+		$(items.join("")).appendTo(".message-list");
 	})
 })
