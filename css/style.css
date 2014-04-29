@@ -552,7 +552,7 @@ p.subscribe {
 	font-size: .875em;
 	text-align: center;
 }
-a#subscribe {
+#subscribe {
 	display: block;
 	width: 8em;
 	font-size: 1.25em;
@@ -576,7 +576,7 @@ a#subscribe {
     -o-transition: all 0.15s;
     transition: all 0.15s;
 }
-a#subscribe:hover {
+#subscribe:hover {
 	background: #e06f0b;
 	/* 阴影 */
 	-webkit-box-shadow: 0 .4em 0 0 #d35400;
