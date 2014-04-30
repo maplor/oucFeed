@@ -66,3 +66,13 @@ function zTreeOnAsyncError (event, treeId, treeNode, XMLHttpRequest, textStatus,
 		var time = setTimeout('zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes)', 500);
 	}
 }
+
+function getCheckedFromNodes (nodes) {
+    var dst = {};
+    $.each(nodes, function(index, node) {
+        if (node.checked) {
+            dst[node.name] = getCheckedFromNodes(node.children);
+        }
+    });
+    return dst;
+}
