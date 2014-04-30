@@ -1,1 +1,8 @@
-js/html5.js
+/js/html5.js
+
+# HBuilder
+/.project
+
+# IntelliJ IDEA
+/.idea/
+/*.iml

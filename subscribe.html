@@ -58,25 +58,25 @@
 			type: "get",
 			contentType: "application/json",
 			url: "http://oucfeed.duapp.com/category",
-			dataFilter: ownToStandard,
+			dataFilter: ownToStandard
 			//autoParam: [],
 		},
 		callback: {
-			onAsyncError: zTreeOnAsyncError,
+			onAsyncError: zTreeOnAsyncError
 		},
 		check: {
-			enable: true,
+			enable: true
 		},
 		view: {
-			showIcon: false,
-		},
+			showIcon: false
+		}
 	}
 	var zNodes = [];
 	$(document).ready(function() {
 		zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes);
 		$("#subscribe").on("click", function() {
 			alert("click!");
-			var chose = zTreeObj.getCheckedNodes();
+			var chose = getCheckedFromNodes(zTreeObj.getNodes());
 			console.log(chose);
 		})
 	})
