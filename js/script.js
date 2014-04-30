@@ -59,3 +59,10 @@ function ownToStandard (treeId, parentNode, responseData) {
 	//console.log(dst);
 	return dst;
 }
+var reAsyncNum = 0;  //记录重复刷新次数
+function zTreeOnAsyncError (event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+	reAsyncNum++;
+	if(reAsyncNum < 10) {
+		var time = setTimeout('zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes)', 500);
+	}
+}
