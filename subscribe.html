@@ -55,21 +55,22 @@
 	var zSetting = {
 		async: {
 			enable: true,
-			//type: "get",
+			type: "get",
 			contentType: "application/json",
-			url: "http://host/getNode.php",
+			url: "http://oucfeed.duapp.com/category",
+			dataFilter: ownToStandard,
 			//autoParam: [],
-		}
+		},
 		check: {
-			enable: true
-		}
+			enable: true,
+		},
 		view: {
-			showIcon: false;
-		}
+			showIcon: false,
+		},
 	}
 	var zNodes = [];
 	$(document).ready(function() {
-		zTreeObj = $.fn.zTree.init($("#tree", zSetting, zNodes));
+		zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes);
 		$("#subscribe").on("click", function() {
 			var chose = zTreeObj.getCheckedNodes();
 		})

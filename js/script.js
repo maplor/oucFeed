@@ -39,14 +39,23 @@ $(document).ready(function() {
 	})
 	
 	// 消息列表Ajax
-	$.getJSON('http://oucfeed.duapp.com/list', function(data) {
-		var items = [];
-		$.each(data, function(key, val) {
-			items.push('<li><section class="message-con"><a href="#"><h3>' +
-				val.title + '</h3><p>来源：<span>' +
-				val.category.join("-") + '</span>&nbsp;时间：<time>' +
-				val.datetime + '</time></p><span class="more">详情></span></a></section></li>');
-		});
-		$(items.join("")).appendTo(".message-list");
-	})
+//	$.getJSON('http://oucfeed.duapp.com/list', function(data) {
+//		var items = [];
+//		$.each(data, function(key, val) {
+//			items.push('<li><section class="message-con"><a href="#"><h3>' +
+//				val.title + '</h3><p>来源：<span>' +
+//				val.category.join("-") + '</span>&nbsp;时间：<time>' +
+//				val.datetime + '</time></p><span class="more">详情></span></a></section></li>');
+//		});
+//		$(items.join("")).appendTo(".message-list");
+//	})
 })
+
+function ownToStandard (treeId, parentNode, responseData) {
+	var dst = [];
+	for(key in responseData){
+		dst.push({name:key, children:ownToStandard(treeId, parentNode, responseData[key])});
+	}
+	//console.log(dst);
+	return dst;
+}
