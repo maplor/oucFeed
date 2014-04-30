@@ -53,9 +53,9 @@ $(document).ready(function() {
 
 function ownToStandard (treeId, parentNode, responseData) {
 	var dst = [];
-	for(key in responseData){
-		dst.push({name:key, children:ownToStandard(treeId, parentNode, responseData[key])});
-	}
+	$.each(responseData, function (key, value) {
+		dst.push({name: key, children: ownToStandard(treeId, parentNode, value)});
+	});
 	//console.log(dst);
 	return dst;
 }
@@ -68,11 +68,11 @@ function zTreeOnAsyncError (event, treeId, treeNode, XMLHttpRequest, textStatus,
 }
 
 function getCheckedFromNodes (nodes) {
-    var dst = {};
-    $.each(nodes, function(index, node) {
-        if (node.checked) {
-            dst[node.name] = getCheckedFromNodes(node.children);
-        }
-    });
-    return dst;
+	var dst = {};
+	$.each(nodes, function(index, node) {
+		if (node.checked) {
+			dst[node.name] = getCheckedFromNodes(node.children);
+		}
+	});
+	return dst;
 }

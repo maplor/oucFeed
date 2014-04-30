@@ -58,18 +58,18 @@
 			type: "get",
 			contentType: "application/json",
 			url: "http://oucfeed.duapp.com/category",
-			dataFilter: ownToStandard,
+			dataFilter: ownToStandard
 			//autoParam: [],
 		},
 		callback: {
-			onAsyncError: zTreeOnAsyncError,
+			onAsyncError: zTreeOnAsyncError
 		},
 		check: {
-			enable: true,
+			enable: true
 		},
 		view: {
-			showIcon: false,
-		},
+			showIcon: false
+		}
 	}
 	var zNodes = [];
 	$(document).ready(function() {
