@@ -37,18 +37,6 @@ $(document).ready(function() {
 		nav.toggle(300);
 		return false;
 	})
-	
-	// 消息列表Ajax
-//	$.getJSON('http://oucfeed.duapp.com/list', function(data) {
-//		var items = [];
-//		$.each(data, function(key, val) {
-//			items.push('<li><section class="message-con"><a href="#"><h3>' +
-//				val.title + '</h3><p>来源：<span>' +
-//				val.category.join("-") + '</span>&nbsp;时间：<time>' +
-//				val.datetime + '</time></p><span class="more">详情></span></a></section></li>');
-//		});
-//		$(items.join("")).appendTo(".message-list");
-//	})
 })
 //将服务器JSON转为zTree所需JSON
 function ownToStandard (treeId, parentNode, responseData) {
@@ -98,5 +86,51 @@ function postCheckedDataError (XMLHttpRequest, textStatus, errorThrown) {
 	}
 }
 function postCheckedDataSuccess (data, textStatus, XMLHttpRequest) {
-	console.log(textStatus + " & id:" + data.id);
+	//console.log(textStatus + " & id:" + data.id);
+	setStorage(data.id);
+}
+//本地存储用户id方法
+function setStorage (id) {
+	if (window.localStorage) {
+		var storage = window.localStorage;
+		if (!storage.getItem("feedId")) {
+			try{
+				storage.setItem("feedId", id);
+				return true;
+			}catch(e){
+				//TODO handle the exception 应提示存储失败
+				return false;
+			}
+		} else{
+			storage.removeItem("feedId");
+			storage.setItem("feedId", id);
+			return true;
+		}
+	} else{
+		//TODO 不支持LoaclStorage,使用cookies
+	}
+}
+//获得本地用户id方法
+function getStorage () {
+	if (window.localStorage) {
+		var storage = window.localStorage;
+		return storage.getItem("feedId");
+	} else{
+		//TODO 不支持LoaclStorage,使用cookies
+		return false;
+	}
+}
+//输出消息列表
+function updateMessageList (userFeedId) {
+	// 消息列表Ajax
+	$.getJSON('http://oucfeed.duapp.com/news/' + userFeedId, function(data) {
+		var items = [];
+		$.each(data, function(key, val) {
+			items.push('<li><section class="message-con"><a href="#"><h3>' +
+				val.title + '</h3><p>来源：<span>' +
+				val.category.join("-") + '</span>&nbsp;时间：<time>' +
+				val.datetime + '</time></p><span class="more">详情></span></a></section></li>');
+		});
+		$(items.join("")).appendTo(".message-list");
+	})
 }
