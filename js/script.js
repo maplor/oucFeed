@@ -50,7 +50,7 @@ $(document).ready(function() {
 //		$(items.join("")).appendTo(".message-list");
 //	})
 })
-
+//将服务器JSON转为zTree所需JSON
 function ownToStandard (treeId, parentNode, responseData) {
 	var dst = [];
 	$.each(responseData, function (key, value) {
@@ -59,14 +59,16 @@ function ownToStandard (treeId, parentNode, responseData) {
 	//console.log(dst);
 	return dst;
 }
-var reAsyncNum = 0;  //记录重复刷新次数
+//zTree异步加载所需函数
+var reAsyncGetNum = 0;  //记录重复GET刷新次数
+//加载失败时执行函数
 function zTreeOnAsyncError (event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
-	reAsyncNum++;
-	if(reAsyncNum < 10) {
-		var time = setTimeout('zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes)', 500);
+	reAsyncGetNum++;
+	if(reAsyncGetNum < 10) {
+		var time = setTimeout('zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes)', 300);
 	}
 }
-
+//将用户选择内容转为服务器所需JSON
 function getCheckedFromNodes (nodes) {
 	var dst = {};
 	$.each(nodes, function(index, node) {
@@ -75,4 +77,26 @@ function getCheckedFromNodes (nodes) {
 		}
 	});
 	return dst;
+}
+function postCheckedData (data) {
+	$.ajax({
+		type:"post",
+		url:"http://oucfeed.duapp.com/profile",
+		async:true,
+		contentType:"application/json",
+		data:JSON.stringify(data),
+		dataType:"json",
+		error:postCheckedDataError,
+		success:postCheckedDataSuccess
+	});
+}
+var reAsyncPostNum = 0;  //记录重复POST刷新次数
+function postCheckedDataError (XMLHttpRequest, textStatus, errorThrown) {
+	reAsyncPostNum++;
+	if(reAsyncPostNum < 10) {
+		var time = setTimeout('postCheckedData(getCheckedFromNodes(zTreeObj.getNodes()))', 300);
+	}
+}
+function postCheckedDataSuccess (data, textStatus, XMLHttpRequest) {
+	console.log(textStatus + " & id:" + data.id);
 }

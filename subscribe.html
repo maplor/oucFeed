@@ -75,9 +75,7 @@
 	$(document).ready(function() {
 		zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes);
 		$("#subscribe").on("click", function() {
-			alert("click!");
-			var chose = getCheckedFromNodes(zTreeObj.getNodes());
-			console.log(chose);
+			postCheckedData(getCheckedFromNodes(zTreeObj.getNodes()));
 		})
 	})
 </script>
