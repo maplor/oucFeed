@@ -605,15 +605,18 @@ section.message-con a.abstract {
 	position: relative;
 }
 section.message-con a.abstract h3 {
+	padding-right: 2em;
 	font-size: 1em;
 }
 section.message-con a.abstract p {
 	margin: .5em 0 0 0;
+	padding-right: 2.7em;
 	font-size: 0.875em;
 }
 div.message-con {
-	padding: 0 .5em;
+	padding: .25em .625em;
 	display: none;
+	border-left: .25em solid #ecf0f1;
 }
 div.message-con h4.con-title {
 	border-bottom: 0.0625em solid #bdc3c7;
