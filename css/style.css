@@ -592,26 +592,33 @@ p.subscribe {
 	color: #429fde;
 	padding: 0 .3125em;
 }
-.message-con {
+section.message-con {
 	padding: .25em 0;
 	border-bottom: 0.0625em solid #cccccc;
 }
-#loadMore:hover, .message-con:hover {
+#loadMore:hover, .message-con a.abstract:hover {
 	background: #ecf0f1;
 }
-.message-con a {
+section.message-con a.abstract {
 	display: block;
 	color: #34495e;
 	position: relative;
 }
-.message-con h3 {
+section.message-con a.abstract h3 {
 	font-size: 1em;
 }
-.message-con p {
+section.message-con a.abstract p {
 	margin: .5em 0 0 0;
 	font-size: 0.875em;
 }
-.message-con .more {
+div.message-con {
+	padding: 0 .5em;
+	display: none;
+}
+div.message-con h4.con-title {
+	border-bottom: 0.0625em solid #bdc3c7;
+}
+section.message-con .more {
 	font-size: 0.875em;
 	line-height: 1em;
 	color: #999999;

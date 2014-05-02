@@ -128,7 +128,7 @@ function getStorage () {
 }
 //初始化消息列表
 function initMessageList () {
-	var str = '<div class="title"><h2>最新消息</h2><hr /></div><ul class="message-list"></ul><a href="javascript:;" id="loadMore">查看更多</a>';
+	var str = '<div class="title"><h2>最新消息</h2><hr /></div><ul class="message-list"></ul>';
 	$(str).appendTo("article.main");
 }
 //输出消息列表
@@ -137,12 +137,32 @@ function updateMessageList (userFeedId) {
 	$.getJSON('http://oucfeed.duapp.com/list/' + userFeedId, function(data) {
 		var items = [];
 		$.each(data, function(key, val) {
-			items.push('<li><section class="message-con"><a href="#"><h3>' +
+			items.push('<li><section class="message-con"><a class="abstract" href="' +
+				val.link + '" data-id="' +
+				val.id + '"><h3>' +
 				val.title + '</h3><p>来源：<span>' +
 				val.category.join("-") + '</span>&nbsp;时间：<time>' +
-				val.datetime + '</time></p><span class="more">详情></span></a></section></li>');
+				val.datetime + '</time></p><span class="more">详情&gt;</span></a></section></li>');
 		});
 		$(items.join("")).appendTo(".message-list");
+		$(".message-con a.abstract").on('click', function() {
+			if ($(this).next().html() == null) {
+				addContentById(this);
+			} else{
+				$(this).next().toggle(500);
+			}
+			var toggleNotice = $(this).children(".more");
+			toggleNotice.html() == '详情&gt;' ? toggleNotice.html('收起^') : toggleNotice.html('详情&gt;')
+			return false;
+		})
+	})
+}
+//通过消息的id获得消息内容
+function addContentById (elem) {
+	var from = $(elem).attr("href");
+	var messageId = $(elem).attr("data-id");
+	$.getJSON('http://oucfeed.duapp.com/item/' + messageId, function(data) {
+		$(elem).after('<div class="message-con"><h4 class="con-title">消息内容</h4>' + data.content + '</div>').next().show(500);
 	})
 }
 //初始化订阅提示及按钮
