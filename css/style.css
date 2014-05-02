@@ -583,6 +583,15 @@ p.subscribe {
 	-moz-box-shadow: 0 .4em 0 0 #d35400;
 	box-shadow: 0 .4em 0 0 #d35400;
 }
+.jumpnotice {
+	display: block;
+	text-align: center;
+	padding: .3125em 0;
+}
+.jumpnotice a {
+	color: #429fde;
+	padding: 0 .3125em;
+}
 .message-con {
 	padding: .25em 0;
 	border-bottom: 0.0625em solid #cccccc;

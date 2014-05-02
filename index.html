@@ -35,7 +35,7 @@
 	</header>
 	<section class="container">
 		<article class="main" role="main">
-			<div class="title">
+			<!--<div class="title">
 				<h2>订阅消息</h2>
 				<hr />
 			</div>
@@ -46,15 +46,6 @@
 				<hr />
 			</div>
 			<ul class="message-list">
-				<!--<li>
-					<section class="message-con">
-						<a href="#">
-							<h3>消息内容11111111111</h3>
-							<p>来源：<span>教务处</span>&nbsp;时间：<time>2014.4.1</time></p>
-							<span class="more">详情></span>
-						</a>
-					</section>
-				</li>
 				<li>
 					<section class="message-con">
 						<a href="#">
@@ -81,9 +72,18 @@
 							<span class="more">详情></span>
 						</a>
 					</section>
-				</li>-->
+				</li>
+				<li>
+					<section class="message-con">
+						<a href="#">
+							<h3>消息内容11111111111</h3>
+							<p>来源：<span>教务处</span>&nbsp;时间：<time>2014.4.1</time></p>
+							<span class="more">详情></span>
+						</a>
+					</section>
+				</li>
 			</ul>
-			<a href="javascript:;" id="loadMore">查看更多</a>
+			<a href="javascript:;" id="loadMore">查看更多</a>-->
 		</article>
 		<!--<aside class="sidebar" role="complementary">
 			<section class="notice">
@@ -104,7 +104,10 @@
 	$(document).ready(function() {
 		var userFeedId = getStorage();
 		if(userFeedId) {
+			initMessageList();
 			updateMessageList(userFeedId);
+		} else {
+			initSubscribe();
 		}
 	})
 </script>

@@ -87,7 +87,13 @@ function postCheckedDataError (XMLHttpRequest, textStatus, errorThrown) {
 }
 function postCheckedDataSuccess (data, textStatus, XMLHttpRequest) {
 	//console.log(textStatus + " & id:" + data.id);
-	setStorage(data.id);
+	if (setStorage(data.id)) {
+		$("#subscribe").html("订阅成功！");
+		$('<p class="jumpnotice">页面没有跳转？点<a href="index.html">这里</a>去查看最新消息。</p>').appendTo("article.main");
+		var time = setTimeout('location.href = "index.html"', 2000);
+	} else{
+		$("#subscribe").html("订阅失败:-(");
+	}
 }
 //本地存储用户id方法
 function setStorage (id) {
@@ -120,10 +126,15 @@ function getStorage () {
 		return false;
 	}
 }
+//初始化消息列表
+function initMessageList () {
+	var str = '<div class="title"><h2>最新消息</h2><hr /></div><ul class="message-list"></ul><a href="javascript:;" id="loadMore">查看更多</a>';
+	$(str).appendTo("article.main");
+}
 //输出消息列表
 function updateMessageList (userFeedId) {
 	// 消息列表Ajax
-	$.getJSON('http://oucfeed.duapp.com/news/' + userFeedId, function(data) {
+	$.getJSON('http://oucfeed.duapp.com/list/' + userFeedId, function(data) {
 		var items = [];
 		$.each(data, function(key, val) {
 			items.push('<li><section class="message-con"><a href="#"><h3>' +
@@ -133,4 +144,9 @@ function updateMessageList (userFeedId) {
 		});
 		$(items.join("")).appendTo(".message-list");
 	})
+}
+//初始化订阅提示及按钮
+function initSubscribe () {
+	var str = '<div class="title"><h2>订阅消息</h2><hr /></div><p class="subscribe">你还没有订阅任何消息，点击下面按钮开始个性化之旅吧！</p><a href="subscribe.html" id="subscribe">开始订阅</a>';
+	$(str).appendTo("article.main");
 }
