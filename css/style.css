@@ -199,7 +199,8 @@ q {
  */
 
 small {
-    font-size: 80%;
+    /*font-size: 80%;*/
+   font-size: .875em;
 }
 
 /**
@@ -519,6 +520,9 @@ a {
 #nav ul li a{
 	display: block;
 	padding: .625em 0;
+}
+#nav ul li a small {
+	padding: 0 .5em;
 }
 section.container {
 	padding-bottom: 3em;
