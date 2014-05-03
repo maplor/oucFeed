@@ -30,6 +30,12 @@ var nav = $('#nav');
 var navItem = nav.find("li");
 var collapse = $('#nav-collapse');
 $(document).ready(function() {
+	if (!window.JSON) {
+		$('<script type="text/javascript" src="js/json2.js" ></script>').appendTo("head");
+	}
+	if (!window.localStorage) {
+		$('<script type="text/javascript" src="js/localstorageshim.min.js" ></script>').appendTo("head");
+	}
 	if (responsiveNav()) {
 		collapse.on('click', function() {
 			nav.toggle(300);
