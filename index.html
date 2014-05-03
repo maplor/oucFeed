@@ -22,10 +22,10 @@
 			<!--<div class="logo">
 				<a href="index.html"><img src="#" alt="OUC信息聚合平台" /></a>
 			</div>-->
-			<nav id="nav" class="navigation" role="navigation">
+			<nav id="nav" role="navigation">
 				<ul>
-					<li><a href="index.html">首页<small>&mdash;&nbsp;查看最新的消息</small></a></li>
-					<li><a href="subscribe.html">分类订阅<small>&mdash;&nbsp;分类查看更详细</small></a></li>
+					<li><a href="index.html">首页<small><!--&mdash;&nbsp;-->查看最新的消息</small></a></li>
+					<li><a href="subscribe.html">分类订阅<small><!--&mdash;&nbsp;-->分类查看更详细</small></a></li>
 					<!--<li><a href="#">我的收藏<small>关心的消息不错过</small></a></li>-->
 					<!--<li><a href="#">登录&amp;注册<small>个性化定制更自由</small></a></li>-->
 				</ul>
@@ -102,16 +102,11 @@
 <script src="js/script.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-		var userFeedId = getStorage();
+		var userFeedId = getStorage("feedId");
 		if(userFeedId) {
 			initMessageList();
 			updateMessageList(userFeedId);
-//			$(".message-con a").on('click', function() {
-//				alert("1");
-//				addContentById(this);
-//				//$("article.main").empty();
-//				return false;
-//			})
+			initUnsubscribe();
 		} else {
 			initSubscribe();
 		}

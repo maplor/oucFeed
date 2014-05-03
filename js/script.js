@@ -26,18 +26,31 @@
 //		return false;
 //	}
 //}
+var nav = $('#nav');
+var navItem = nav.find("li");
+var collapse = $('#nav-collapse');
 $(document).ready(function() {
-	// 导航栏点击切换方法
-	var nav = $('#nav');
-	var collapse = $('#nav-collapse');
-	nav.hide(400);
-	collapse.addClass('active');
-	
-	collapse.on('click', function() {
-		nav.toggle(300);
-		return false;
-	})
+	if (responsiveNav()) {
+		collapse.on('click', function() {
+			nav.toggle(300);
+			return false;
+		});
+	}
 })
+$(window).resize(function() {
+	responsiveNav();
+})
+//响应式导航栏
+function responsiveNav () {
+	if (navItem.css("float") != "left") {
+		nav.hide(400);
+		collapse.addClass('active');
+	} else{
+		nav.show();
+		collapse.removeClass('active');
+	}
+	return true;
+}
 //将服务器JSON转为zTree所需JSON
 function ownToStandard (treeId, parentNode, responseData) {
 	var dst = [];
@@ -117,10 +130,20 @@ function setStorage (id) {
 	}
 }
 //获得本地用户id方法
-function getStorage () {
+function getStorage (key) {
 	if (window.localStorage) {
 		var storage = window.localStorage;
-		return storage.getItem("feedId");
+		return storage.getItem(key);
+	} else{
+		//TODO 不支持LoaclStorage,使用cookies
+		return false;
+	}
+}
+//清楚本地存储消息
+function clearStorgae (key) {
+	if (window.localStorage) {
+		window.localStorage.removeItem(key);
+		return true;
 	} else{
 		//TODO 不支持LoaclStorage,使用cookies
 		return false;
@@ -169,4 +192,17 @@ function addContentById (elem) {
 function initSubscribe () {
 	var str = '<div class="title"><h2>订阅消息</h2><hr /></div><p class="subscribe">你还没有订阅任何消息，点击下面按钮开始个性化之旅吧！</p><a href="subscribe.html" id="subscribe">开始订阅</a>';
 	$(str).appendTo("article.main");
+}
+//初始化取消订阅按钮
+function initUnsubscribe () {
+	var str = '<div class="title"><h2>取消订阅</h2><hr /></div><p class="subscribe">取消订阅后将会丢失自定义的订阅分类，真的要取消？</p><a href="index.html" id="un-subscribe">取消订阅</a>';
+	$(str).appendTo("article.main");
+	$("#un-subscribe").on('click', function() {
+		if (clearStorgae("feedId")) {
+			return true;
+		} else{
+			return false;
+		}
+	})
+	
 }

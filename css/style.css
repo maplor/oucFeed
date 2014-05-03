@@ -501,7 +501,7 @@ a {
 	height: 1.25em;
 	line-height: 1.25em;
 	margin: .5em 0;
-	padding: .5em 0;
+	padding: .5em;
 	
 	display: none;
 }
@@ -556,7 +556,7 @@ p.subscribe {
 	font-size: .875em;
 	text-align: center;
 }
-#subscribe {
+#subscribe, #un-subscribe {
 	display: block;
 	width: 8em;
 	font-size: 1.25em;
@@ -586,6 +586,23 @@ p.subscribe {
 	-webkit-box-shadow: 0 .4em 0 0 #d35400;
 	-moz-box-shadow: 0 .4em 0 0 #d35400;
 	box-shadow: 0 .4em 0 0 #d35400;
+}
+#un-subscribe {
+	font-size: 1em;
+	width: 6em;
+	padding: .5em;
+	background: #e74c3c;
+	/* 阴影 */
+	-webkit-box-shadow: 0 .25em 0 0 #c0392b;
+	-moz-box-shadow: 0 .25em 0 0 #c0392b;
+	box-shadow: 0 .25em 0 0 #c0392b;
+}
+#un-subscribe:hover {
+	background: #e52c17;
+	/* 阴影 */
+	-webkit-box-shadow: 0 .3125em 0 0 #c0392b;
+	-moz-box-shadow: 0 .3125em 0 0 #c0392b;
+	box-shadow: 0 .3125em 0 0 #c0392b;
 }
 .jumpnotice {
 	display: block;
@@ -656,6 +673,69 @@ footer {
 }
 footer p {
 	text-align: center;
+}
+
+/* responsiveness */
+@media only all and (min-width: 38em) {
+	.container {
+		padding: 0 2em;
+	}
+	#nav {
+		clear: none;
+		float: right;
+		border: none;
+	}
+	#nav ul {
+		float: left;
+		padding: 0;
+		border: none;
+	}
+	#nav ul li {
+		float: left;
+	}
+	#nav ul li a {
+		line-height: 1.11111111em;
+		font-size: 1.125em;
+		padding: .88888888em;
+	}
+	#nav ul li:last-child a {
+		padding-right: 0;
+	}
+	#nav ul li a small {
+		display: none;
+	}
+}
+@media only all and (min-width: 60em) {
+	.title h1 {
+		font-size: 1.5em;
+		line-height: 1.5em;
+	}
+	#nav ul li a {
+		padding-top: .5em;
+		padding-bottom: .5em;
+	}
+	#nav ul li a small {
+		display: block;
+		padding: .5em .5em 0 0;
+	}
+}
+@media only all and (min-width: 82em) {
+	div.message-con {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+		-webkit-column-gap: 1.5em;
+		-moz-column-gap: 1.5em;
+		column-gap: 1.5em;
+		-webkit-column-rule: .125em dashed #bdc3c7;
+		-moz-column-rule: .125em dashed #bdc3c7;
+		column-rule: .125em dashed #bdc3c7;
+	}
+	.container {
+		padding: 0;
+		width: 80em;
+		margin: 0 auto;
+	}
 }
 /*.main h2:before, .main h2:after {
 	content: "";
