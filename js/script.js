@@ -75,6 +75,11 @@ function zTreeOnAsyncError (event, treeId, treeNode, XMLHttpRequest, textStatus,
 		var time = setTimeout('zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes)', 300);
 	}
 }
+//加载成功后
+function zTreeOnAsyncSuccess (event, treeId, treeNode, msg) {
+	$("#listload").hide(300).remove();
+	$("#subscribe").css("display","block");
+}
 //将用户选择内容转为服务器所需JSON
 function getCheckedFromNodes (nodes) {
 	var dst = {};
@@ -158,7 +163,7 @@ function clearStorgae (key) {
 }
 //初始化消息列表
 function initMessageList () {
-	var str = '<div class="title"><h2>最新消息</h2><hr /></div><ul class="message-list"></ul>';
+	var str = '<div class="title"><h2>最新消息</h2><hr /></div><div class="loading" id="listload"><img src="images/loading.gif" alt="Loading" /><h2>正在努力加载消息列表...</h2></div><ul class="message-list"></ul>';
 	$(str).appendTo("article.main");
 }
 //输出消息列表
@@ -175,6 +180,10 @@ function updateMessageList (userFeedId) {
 				val.datetime + '</time></p><span class="more">详情&gt;</span></a></section></li>');
 		});
 		$(items.join("")).appendTo(".message-list");
+		//隐藏并删除loading动画
+		$("#listload").hide(300).remove();
+		//生成取消订阅按钮
+		initUnsubscribe();
 		$(".message-con a.abstract").on('click', function() {
 			if ($(this).next().html() == null) {
 				addContentById(this);

@@ -20,15 +20,10 @@
 		<div class="container">
 			<a class="title" href="/"><h1>掌上海大</h1></a>
 			<a href="#nav" id="nav-collapse">导航</a>
-			<!--<div class="logo">
-				<a href="index.html"><img src="#" alt="OUC信息聚合平台" /></a>
-			</div>-->
 			<nav id="nav" role="navigation">
 				<ul>
 					<li><a href="index.html">首页<small>查看最新的消息</small></a></li>
 					<li><a href="subscribe.html">分类订阅<small>分类查看更详细</small></a></li>
-					<!--<li><a href="#">我的收藏<small>关心的消息不错过</small></a></li>-->
-					<!--<li><a href="#">登录&amp;注册<small>个性化定制更自由</small></a></li>-->
 				</ul>
 			</nav>
 			<div class="clear"></div>
@@ -40,9 +35,12 @@
 				<h2>订阅消息</h2>
 				<hr />
 			</div>
+			<div class="loading" id="listload">
+				<img src="images/loading.gif" alt="Loading" />
+				<h2>正在努力加载订阅列表...</h2>
+			</div>
 			<ul id="tree" class="ztree"></ul>
-			<a href="javascript:;" id="subscribe">确认订阅</a>
-			<!--<p class="jumpnotice">页面没有跳转？点<a href="index.html">这里</a>去查看最新消息。</p>-->
+			<a href="javascript:;" id="subscribe" class="sub">确认订阅</a>
 		</article>
 	</section>
 	<footer role="contentinfo">
@@ -63,7 +61,8 @@
 			//autoParam: [],
 		},
 		callback: {
-			onAsyncError: zTreeOnAsyncError
+			onAsyncError: zTreeOnAsyncError,
+			onAsyncSuccess: zTreeOnAsyncSuccess
 		},
 		check: {
 			enable: true
@@ -76,7 +75,9 @@
 	$(document).ready(function() {
 		zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes);
 		$("#subscribe").on("click", function() {
-			postCheckedData(getCheckedFromNodes(zTreeObj.getNodes()));
+			if (!!$("#subscribe").html("正在订阅")) {
+				postCheckedData(getCheckedFromNodes(zTreeObj.getNodes()));
+			}
 		})
 	})
 </script>

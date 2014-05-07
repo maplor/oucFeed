@@ -552,6 +552,17 @@ section.container {
 	margin-top: -0.1225em;
 	z-index: -1;
 }
+.main .loading {
+	padding: 1em 0;
+	text-align: center;
+}
+.main .loading h2 {
+	font-size: .875em;
+	color: #95a5a6;
+	font-weight: normal;
+	text-align: center;
+	padding-top: 1em;
+}
 p.subscribe {
 	font-size: .875em;
 	text-align: center;
@@ -586,6 +597,9 @@ p.subscribe {
 	-webkit-box-shadow: 0 .4em 0 0 #d35400;
 	-moz-box-shadow: 0 .4em 0 0 #d35400;
 	box-shadow: 0 .4em 0 0 #d35400;
+}
+#subscribe.sub {
+	display: none;
 }
 #un-subscribe {
 	font-size: 1em;

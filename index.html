@@ -19,15 +19,10 @@
 		<div class="container">
 			<a class="title" href="/"><h1>掌上海大</h1></a>
 			<a href="#nav" id="nav-collapse">导航</a>
-			<!--<div class="logo">
-				<a href="index.html"><img src="#" alt="OUC信息聚合平台" /></a>
-			</div>-->
 			<nav id="nav" role="navigation">
 				<ul>
-					<li><a href="index.html">首页<small><!--&mdash;&nbsp;-->查看最新的消息</small></a></li>
-					<li><a href="subscribe.html">分类订阅<small><!--&mdash;&nbsp;-->分类查看更详细</small></a></li>
-					<!--<li><a href="#">我的收藏<small>关心的消息不错过</small></a></li>-->
-					<!--<li><a href="#">登录&amp;注册<small>个性化定制更自由</small></a></li>-->
+					<li><a href="index.html">首页<small>查看最新的消息</small></a></li>
+					<li><a href="subscribe.html">分类订阅<small>分类查看更详细</small></a></li>
 				</ul>
 			</nav>
 			<div class="clear"></div>
@@ -35,65 +30,8 @@
 	</header>
 	<section class="container">
 		<article class="main" role="main">
-			<!--<div class="title">
-				<h2>订阅消息</h2>
-				<hr />
-			</div>
-			<p class="subscribe">你还没有订阅任何消息，点击下面按钮开始个性化之旅吧！</p>
-			<a href="subscribe.html" id="subscribe">开始订阅</a>
-			<div class="title">
-				<h2>最新消息</h2>
-				<hr />
-			</div>
-			<ul class="message-list">
-				<li>
-					<section class="message-con">
-						<a href="#">
-							<h3>消息内容11111111111</h3>
-							<p>来源：<span>教务处</span>&nbsp;时间：<time>2014.4.1</time></p>
-							<span class="more">详情></span>
-						</a>
-					</section>
-				</li>
-				<li>
-					<section class="message-con">
-						<a href="#">
-							<h3>消息内容11111111111</h3>
-							<p>来源：<span>教务处</span>&nbsp;时间：<time>2014.4.1</time></p>
-							<span class="more">详情></span>
-						</a>
-					</section>
-				</li>
-				<li>
-					<section class="message-con">
-						<a href="#">
-							<h3>消息内容11111111111</h3>
-							<p>来源：<span>教务处</span>&nbsp;时间：<time>2014.4.1</time></p>
-							<span class="more">详情></span>
-						</a>
-					</section>
-				</li>
-				<li>
-					<section class="message-con">
-						<a href="#">
-							<h3>消息内容11111111111</h3>
-							<p>来源：<span>教务处</span>&nbsp;时间：<time>2014.4.1</time></p>
-							<span class="more">详情></span>
-						</a>
-					</section>
-				</li>
-			</ul>
-			<a href="javascript:;" id="loadMore">查看更多</a>-->
+			
 		</article>
-		<!--<aside class="sidebar" role="complementary">
-			<section class="notice">
-				<h2>网站公告</h2>
-				<ul>
-					<li><a href="#">上线第一天</a></li>
-					<li><a href="#">准备上线</a></li>
-				</ul>
-			</section>
-		</aside>-->
 	</section>
 	<footer role="contentinfo">
 		<p>PowerBy&nbsp;&nbsp;ITStudio-Maplor</p>
@@ -106,7 +44,6 @@
 		if(userFeedId) {
 			initMessageList();
 			updateMessageList(userFeedId);
-			initUnsubscribe();
 		} else {
 			initSubscribe();
 		}
