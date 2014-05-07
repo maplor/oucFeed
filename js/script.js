@@ -120,6 +120,7 @@ function setStorage (id) {
 		var storage = window.localStorage;
 		if (!storage.getItem("feedId")) {
 			try{
+				storage.removeItem("feedId");
 				storage.setItem("feedId", id);
 				return true;
 			}catch(e){
