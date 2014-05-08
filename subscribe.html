@@ -75,7 +75,11 @@
 	$(document).ready(function() {
 		zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes);
 		$("#subscribe").on("click", function() {
-			if (!!$("#subscribe").html("正在订阅")) {
+			if (!!zTreeObj.getCheckedNodes()) {
+				alert("请选择要订阅的分类！");
+				return false;
+			} else{
+				$("#subscribe").html("正在订阅");
 				postCheckedData(getCheckedFromNodes(zTreeObj.getNodes()));
 			}
 		})
