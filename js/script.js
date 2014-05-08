@@ -71,8 +71,11 @@ var reAsyncGetNum = 0;  //记录重复GET刷新次数
 //加载失败时执行函数
 function zTreeOnAsyncError (event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
 	reAsyncGetNum++;
-	if(reAsyncGetNum < 10) {
-		var time = setTimeout('zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes)', 300);
+	if(reAsyncGetNum < 5) {
+		var time = setTimeout('zTreeObj = $.fn.zTree.init($("#tree"), zSetting, zNodes)', 100);
+	} else{
+		//订阅列表加载失败提示
+		$("#listload img").hide().next("h2").html("加载失败 :-(<br />请确认网络连通或尝试刷新页面。");
 	}
 }
 //加载成功后
@@ -105,8 +108,8 @@ function postCheckedData (data) {
 var reAsyncPostNum = 0;  //记录重复POST刷新次数
 function postCheckedDataError (XMLHttpRequest, textStatus, errorThrown) {
 	reAsyncPostNum++;
-	if(reAsyncPostNum < 10) {
-		var time = setTimeout('postCheckedData(getCheckedFromNodes(zTreeObj.getNodes()))', 300);
+	if(reAsyncPostNum < 5) {
+		var time = setTimeout('postCheckedData(getCheckedFromNodes(zTreeObj.getNodes()))', 100);
 	}
 }
 function postCheckedDataSuccess (data, textStatus, XMLHttpRequest) {
@@ -184,6 +187,7 @@ function updateMessageList (userFeedId) {
 		$("#listload").hide(300).remove();
 		//生成取消订阅按钮
 		initUnsubscribe();
+		//绑定消息点击事件
 		$(".message-con a.abstract").on('click', function() {
 			if ($(this).next().html() == null) {
 				addContentById(this);
@@ -194,6 +198,9 @@ function updateMessageList (userFeedId) {
 			toggleNotice.html() == '详情&gt;' ? toggleNotice.html('收起^') : toggleNotice.html('详情&gt;')
 			return false;
 		})
+	}).fail(function() {
+		//消息列表加载失败提示
+		$("#listload img").hide().next("h2").html("加载失败 :-(<br />请确认网络连通或尝试刷新页面。");
 	})
 }
 //通过消息的id获得消息内容
