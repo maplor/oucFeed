@@ -1,0 +1,40 @@
+@charset "utf-8";
+.container {
+	padding: 0 2em;
+}
+#nav {
+	clear: none;
+	float: right;
+	border: none;
+}
+#nav ul {
+	float: left;
+	padding: 0;
+	border: none;
+}
+#nav ul li {
+	float: left;
+}
+#nav ul li a {
+	line-height: 1.11111111em;
+	font-size: 1.125em;
+	padding: .5em .88888888em;
+}
+#nav ul li a small {
+	display: block;
+	padding: .5em .5em 0 0;
+}
+section.container {
+	*padding-left: 0;
+	*padding-right: 0;
+}
+.main h2 {
+	*line-height: normal;
+}
+.title h1 {
+	font-size: 1.5em;
+	line-height: 1.5em;
+}
+section.message-con .more {
+	*line-height: normal;
+}
