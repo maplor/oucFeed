@@ -120,28 +120,38 @@ function postCheckedDataSuccess (data, textStatus, XMLHttpRequest) {
 		var time = setTimeout('location.href = "index.html"', 2000);
 	} else{
 		$("#subscribe").html("订阅失败:-(");
+		alert("如果你是iPhone/iPad用户，可以尝试在：设置 - Safair 中关闭\"秘密浏览\" ");
 	}
 }
 //本地存储用户id方法
 function setStorage (id) {
-	if (window.localStorage) {
+	if (!!window.localStorage) {
 		var storage = window.localStorage;
-		if (!storage.getItem("feedId")) {
-			try{
-				storage.removeItem("feedId");
-				storage.setItem("feedId", id);
-				return true;
-			}catch(e){
-				//TODO handle the exception 应提示存储失败
-				return false;
-			}
-		} else{
+//		if (!storage.getItem("feedId")) {
+//			try{
+//				storage.removeItem("feedId");
+//				storage.setItem("feedId", id);
+//				return true;
+//			}catch(e){
+//				//TODO handle the exception 应提示存储失败
+//				return false;
+//			}
+//		} else{
+//			storage.removeItem("feedId");
+//			storage.setItem("feedId", id);
+//			return true;
+//		}
+		try{
 			storage.removeItem("feedId");
 			storage.setItem("feedId", id);
 			return true;
+		}catch(e){
+			//TODO handle the exception
+			return false;
 		}
 	} else{
 		//TODO 不支持LoaclStorage,使用cookies
+		return false;
 	}
 }
 //获得本地用户id方法
